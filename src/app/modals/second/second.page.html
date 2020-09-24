@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Insira o valor</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <form #form="ngForm" (ngSubmit)="saveModal(form)">
+    <ion-grid>
+      <ion-row color="light" justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <div padding>
+            <ion-item>
+              <ion-input name="id" [(ngModel)]="data.id" type="hidden" ngModel required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input name="value" [(ngModel)]="data.value" type="text" placeholder="(R$) Valor"
+                [brmasker]="{money: true, thousand: '',  decimalCaracter: '.'}"></ion-input>
+            </ion-item>
+
+          </div>
+          <div padding>
+            <ion-button color="light" size="large" type="submit" [disabled]="form.invalid" expand="block">Salvar
+            </ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+
+
+
+
+
+</ion-content>

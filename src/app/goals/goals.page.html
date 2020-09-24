@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Objetivos
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Meus Objetivos</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content padding>
+    <ion-list>
+      <ion-list-header>Meus Objetivos</ion-list-header>
+     
+      <ion-item lines="inset" *ngFor="let data of Data | async">
+        <ion-label>
+          <h5><b>{{data.name}}</b></h5>
+          <p>{{data.description}}</p>
+          <p><b>Desejado: </b>{{data.goalValue}}</p>
+          <p><b>Valor atual: </b>{{data.actualValue}}</p>
+          <p><b>Criado em: </b>{{data.createdDate}}</p>
+        </ion-label>
+  
+        <div class="item-note" item-end>
+          <button ion-button style="zoom:2.0" round (click)="openModalWithData(data.id, 1)" expand="full">+</button>  
+          <button ion-button style="zoom:2.0" round (click)="openModalWithData(data.id, 0)" expand="full">-</button> 
+          <!-- <button ion-button round (click)="debitValue(data.id)">-</button>       -->
+          <ion-icon name="trash" style="zoom:1.8" (click)="deleteGoal(data.id)"></ion-icon>
+        </div>
+      </ion-item>
+
+    </ion-list>
+  </ion-content>
+
+</ion-content>
